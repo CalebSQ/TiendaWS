@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "personas")
 public class persona implements Serializable {
