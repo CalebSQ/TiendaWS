@@ -4,45 +4,45 @@
     <body>
         <header th:replace="layout/template::header"/>
         <div class="container">
-        <h2>Ingresar Persona</h2>
-        <a th:href="@{/personas}">
-            <button type="button" class="btn btn-light">
-                < Regresar
-            </button>
-        </a>
-        <br/>
-        <!-- Modificar el form -->
-        <form th:action="@{/guardarPersona}" method="post" th:object="${persona}">
-            <input type="hidden" th:field="*{id}"/>
-            <div class="container">
-                <div class="form-group">
-                    <label for="apellido1">Apellido Paterno</label>
-                    <input type="text" class="form-control" name="apellido1" th:field="*{apellido1}"/>
+            <h2>Ingresar Persona</h2>
+            <a th:href="@{/personas}">
+                <button type="button" class="btn btn-light">
+                    < Regresar
+                </button>
+            </a>
+            <br/>
+
+            <form th:action="@{/guardarPersona}" method="post" th:object="${persona}">
+                <input type="hidden" th:field="*{id}"/>
+                <div class="container">
+                    <div class="form-group">
+                        <label th:text="#{personas.apellidoPaterno}" for="apellido1"></label>
+                        <input type="text" class="form-control" name="apellido1" th:field="*{apellido1}"/>
+                    </div>
+                    <div class="form-group">
+                        <label th:text="#{personas.apellidoMaterno}" for="apellido2"></label>
+                        <input type="text" class="form-control" name="apellido2" th:field="*{apellido2}"/>
+                    </div>
+                    <div class="form-group">
+                        <label th:text="#{personas.email}" for="email"></label>
+                        <input type="text" class="form-control" name="email" th:field="*{email}"/>
+                    </div>
+                    <div class="form-group">
+                        <label th:text="#{personas.telefono}" for="telefono"></label>
+                        <input type="text" class="form-control" name="telefono" th:field="*{telefono}"/>
+                    </div>
+                    <label th:text="#{personas.pais}" for="pais"></label>
+                    <div clas="col-sm-10">
+                        <select th:field="*{pais}" class="form-control form-control-sm col-md-6" id="pais">
+                            <option th:each="x:${paises}"
+                                    th:value="${x.id}"
+                                    th:text="${x.pais}"/>
+                        </select>
+                    </div>
+                    <br/>
+                    <input class="btn btn-outline-primary" type="submit" name="guardar" value="Submit"/>
                 </div>
-                <div class="form-group">
-                    <label for="apellido2">Apellido Materno</label>
-                    <input type="text" class="form-control" name="apellido2" th:field="*{apellido2}"/>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="text" class="form-control" name="email" th:field="*{email}"/>
-                </div>
-                <div class="form-group">
-                    <label for="telefono">Telefono</label>
-                    <input type="text" class="form-control" name="telefono" th:field="*{telefono}"/>
-                </div>
-                <label for="pais">Pais</label>
-                <div clas="col-sm-10">
-                    <select th:field="*{pais}" class="form-control form-control-sm col-md-6" id="pais">
-                        <option th:each="x:${paises}"
-                                th:value="${x.id}"
-                                th:text="${x.pais}"/>
-                    </select>
-                </div>
-                <br/>
-                <input class="btn btn-outline-primary" type="submit" name="guardar" value="Submit"/>
-            </div>
-        </form>
+            </form>
         </div>
         <footer th:replace="layout/template::footer"/>
     </body>

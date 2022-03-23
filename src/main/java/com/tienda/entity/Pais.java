@@ -29,7 +29,5 @@ public class Pais implements Serializable{
 
     public void setPais(String pais) {
         this.pais = pais;
-    }
-    
-    
+    }   
 }
